@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard with HTML, CSS & JavaScript</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+
+    <style>
+      .index2-content {
+        display: none; /* Initially hide index2.html elements */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="index1Content">
+      <header>
+        <hr />
+
+        <button
+          class="eightbit-btn eightbit-btn--proceed"
+          onclick="playAudio('')"
+          id="agreementButton"
+        >
+          Agreement Pingpong
+        </button>
+        <hr />
+        <button
+          class="eightbit-btn eightbit-btn--reset"
+          onclick="playAudio('audio1')"
+          /*onclick="playNextAudio()"*/
+          id="playButton"
+        >
+          Press start
+        </button>
+        <hr />
+        <!-- Audio elements -->
+        <audio
+          id="audio1"
+          src="https://www.td-dko.com/content/authoringtooldb/1389/0D281D81-00CB-7CEE-53EF-A3767F78C8F5.mp3"
+          onended="playNextAudio()"
+        ></audio>
+        <audio id="audio2" src=""></audio>
+      </header>
+
+      <script>
+        function playAudio(audioId) {
+          var audio = document.getElementById(audioId);
+          audio.play();
+        }
+        function playNextAudio() {
+          var audio2 = document.getElementById("audio2");
+          audio2.play();
+        }
+      </script>
+    </div>
+
+    <div id="index2Content" class="index2-content" style="display: none">
+      <div id="app"></div>
+      <div class="statement-box">
+        <div id="statement-text" class="statement-text"></div>
+        <button id="generate-statement" class="generate-statement">
+          Generate a Statement
+        </button>
+      </div>
+
+      <audio
+        id="winnerAudio"
+        src="https://www.td-dko.com/content/authoringtooldb/1389/7084F4BC-9E04-3DD1-DFD1-9C3EB54DB4C0.mp3"
+      ></audio>
+
+      <script src="main.js" type="module"></script>
+</div>
+      <script>
+        function playNextAudio() {
+          // Display elements from index2.html
+          document.getElementById("index2Content").style.display = "grid";
+          document.getElementById("app").style.display = "grid";
+          document.getElementById("generate-statement").style.display = "grid";
+
+          var index1Content = document.getElementById("index1Content");
+          index1Content.parentNode.removeChild(index1Content);
+        }
+      </script>
+    
+    <script>
+      function showIndex2() {
+        // Hide index1.html elements
+        document.getElementById("index1Content").style.display = "none";
+        // Show index2.html elements
+        document.getElementById("index2Content").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
